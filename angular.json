@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "projects": {
+    "curso-angular": {
+      "projectType": "application",
+      "root": "apps/curso-angular",
+      "sourceRoot": "apps/curso-angular/src",
+      "prefix": "curso-angular",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/curso-angular",
+            "index": "apps/curso-angular/src/index.html",
+            "main": "apps/curso-angular/src/main.ts",
+            "polyfills": "apps/curso-angular/src/polyfills.ts",
+            "tsConfig": "apps/curso-angular/tsconfig.app.json",
+            "assets": [
+              "apps/curso-angular/src/favicon.ico",
+              "apps/curso-angular/src/assets"
+            ],
+            "styles": ["apps/curso-angular/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/curso-angular/src/environments/environment.ts",
+                  "with": "apps/curso-angular/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "curso-angular:build:production"
+            },
+            "development": {
+              "browserTarget": "curso-angular:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "curso-angular:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/curso-angular/src/**/*.ts",
+              "apps/curso-angular/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/curso-angular"],
+          "options": {
+            "jestConfig": "apps/curso-angular/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "curso-angular-e2e": {
+      "root": "apps/curso-angular-e2e",
+      "sourceRoot": "apps/curso-angular-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/curso-angular-e2e/cypress.json",
+            "devServerTarget": "curso-angular:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "curso-angular:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/curso-angular-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["curso-angular"]
+    }
+  }
+}
