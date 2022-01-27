@@ -1,0 +1,21 @@
+<h1>Tipos de data binding</h1>
+<style>.special{ font-size: large;}</style>
+
+<p>Property Binding:</p>
+{{ expresion }}
+<p >[target] = "expresion"</p>
+
+<p  [attr.aria-label]="'special_color_label'"  [class.special]="isSpecial" [style.color]="isSpecial ? 'green' : 'red'">
+  color especial
+</p>
+
+<p>Event Binding</p>
+<p>
+  <button (click)="handleClick()">Click!</button>
+</p>
+
+<p>Two-Way Binding</p>
+• [( target )] = "expresion"
+<input type="text" [(ngModel)]="text" (change)="handleInput()" (focus)="reset()">
+
+<p>------------------------------------------------</p>

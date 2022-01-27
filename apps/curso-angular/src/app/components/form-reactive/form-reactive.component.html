@@ -1,0 +1,33 @@
+<h1>Form Reactivo!!</h1>
+
+<form [formGroup]="formName" (ngSubmit)="onSubmit()">
+  <label for="Name">Name </label>
+  <input type="text" id="Name" name="Name" formControlName="name" placeholder="Pepito" /><br>
+  <label for="Email">Email </label>
+  <input type="text" name="Email" id="Email" formControlName="email" placeholder="myEmail@company.com" /><br>
+  <label for="BirthDate">BirthDate</label>
+  <input type="date" name="BirthDate" id="BirthDate" formControlName="birthDate"><br>
+  <label for="Age">Age </label>
+  <input [attr.disabled]="true" type="text" name="Age" id="Age" formControlName="age" placeholder="25" /><br>
+  <label for="DniExpireDate" *ngIf="(formName.value.age<70)">DNI Expire Date</label>
+  <input type="date" name="DniExpireDate" id="DniExpireDate" formControlName="dniExpireDate"
+    *ngIf="(formName.value.age<70)">
+  <label for="DniPermanent" formControlName="dniPermanent" *ngIf="(formName.value.age>=70)">Permanent Dni: </label>
+  <input type="checkbox" name="DniPermanent" id="DniPermanent" formControlName='dniPermanent'
+    *ngIf="(formName.value.age>=70)">
+  <br>
+  <p>Complete the form to enable button.</p>
+  <button type="submit" [disabled]="!formName.valid">Submit</button>
+  <div formGroupName="formAdress">
+    <label for="Adress"></label>Adress
+    <input type="text" name="Adress" id="Adress" formControlName='adress'><br>
+    <label for="City"></label>City
+    <input type="text" name="City" id="City" formControlName='city'><br>
+    <label for="CP"></label>CP
+    <input type="text" name="CP" id="CP" formControlName='CP'><br>
+  </div>
+</form>
+<button (click)="log()">Log</button>
+<button (click)="clear()">Clear</button>
+<br>
+<p>---------------------------------</p>

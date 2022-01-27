@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Calculadora</h1>
+  <input type="number" name="value1" id="value1" [(ngModel)]="value1" />
+  <br />
+  <input type="number" name="value2" id="value2" [(ngModel)]="value2" />&nbsp;
+  <button (click)="sum()" class="btn btn-primary">+</button> &nbsp;
+  <button (click)="rest()" class="btn btn-primary">-</button> &nbsp;
+  <button (click)="div()" class="btn btn-primary">/</button> &nbsp;
+  <button (click)="mult()" class="btn btn-primary">*</button> &nbsp;
+  <p>{{ result }}</p>
+</div>

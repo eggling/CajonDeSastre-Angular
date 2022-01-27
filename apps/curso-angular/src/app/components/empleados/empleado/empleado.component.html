@@ -1,0 +1,15 @@
+<div>
+    {{ id + 1 }} {{ empleado.nombre }} {{ empleado.apellido }},
+    {{ empleado.cargo }} // {{ empleado.salario }}€
+    <button mat-icon-button aria-label="Edit" [routerLink]="['/update',id]" [queryParams]="{action:'edit'}" >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Delete" [routerLink]="['/update',id]" [queryParams]="{action:'delete'} ">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <br>
+    <app-caract-empleado (caractEvent)="agregarCaract($event)"></app-caract-empleado>
+    <ul>
+      <li style="list-style: none;" *ngFor="let caract of arrayCaract">{{caract}}</li>
+    </ul>
+  </div>
