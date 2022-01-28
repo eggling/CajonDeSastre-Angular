@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { routes } from '../../../app.module';
+
 import { Empleado } from '../empleado.model';
 import { TestService } from '../test.service';
 

@@ -3,5 +3,6 @@
 <h1>Form con Pipe</h1>
 <p>Introduce una fecha  MM/DD/AAAA </p>
 <input type="text" name="myInput" [(ngModel)]="fecha" id="myInput" ><button (click)="now()">NOW</button>
+
 <p>{{fecha | date: 'full' | customDate}}</p>
 <!-- <p>{{fecha | date: 'full' | uppercase}}</p> -->
