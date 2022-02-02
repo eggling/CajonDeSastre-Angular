@@ -12,13 +12,16 @@ export class RoutingContactoComponent {
   constructor(private router:Router){
     // auto go back in 5s
     setTimeout(() => {
-      this.goHome()
+      if(router.url==='/contact'){
+        this.goHome()
+      }
     }, 5000);
-    
+
   }
+
  goHome(){
   this.router.navigate([''])
  }
 
- 
+
 }

@@ -6,7 +6,7 @@ import { Component,} from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  slider: number = 50
   title = 'curso-angular';
 
   logEvBuscador(e:string){

@@ -33,6 +33,7 @@ export class EmpleadosComponent implements OnInit {
       .runAlertService(`Empleado ${this.cuadroNombre} , ${this.cuadroApellido} Añadido 
     \n Salario: ${this.cuadroSalario} 
     \n Cargo: ${this.cuadroCargo}`);
+    // poner los campos en blanco
     this.sv.add(miEmpleado);
     this.cuadroNombre = '';
     this.cuadroApellido = '';

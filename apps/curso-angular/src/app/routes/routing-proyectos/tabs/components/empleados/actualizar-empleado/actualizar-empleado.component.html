@@ -1,9 +1,6 @@
 <div class="container">
-  <div class="col" style="text-align: center">
-    <h1>{{ titulo }}</h1>
-  </div>
-  <br /><br />
-  <form class="form-group row" action="">
+  <p></p>
+  <form class="form-group row">
     <div class="form-group col-md-3">
       <label for="nombre">Nombre: </label>
       <input
@@ -13,6 +10,8 @@
         placeholder="Nombre"
         class="form-control"
         [(ngModel)]="cuadroNombre"
+        [readonly]="action == 'delete'"
+        [class]="action == 'delete' ? 'disabled' : '' "
       />
     </div>
     <div class="form-group col-md-3">
@@ -24,6 +23,8 @@
         placeholder="Apellido"
         class="form-control"
         [(ngModel)]="cuadroApellido"
+        [readonly]="action == 'delete'"
+        [class]="action == 'delete' ? 'disabled' : '' "
       />
     </div>
     <div class="form-group col-md-3">
@@ -35,6 +36,8 @@
         placeholder="Cargo"
         class="form-control"
         [(ngModel)]="cuadroCargo"
+        [readonly]="action == 'delete'"
+        [class]="action == 'delete' ? 'disabled' : '' "
       />
     </div>
     <div class="form-group col-md-3">
@@ -46,24 +49,23 @@
         placeholder="Salario"
         class="form-control"
         [(ngModel)]="cuadroSalario"
+        [readonly]="action == 'delete'"
+        [class]="action == 'delete' ? 'disabled' : '' "
       />
     </div>
+    <p></p>
+    <h1 *ngIf="action == 'delete'" style="color: red;">Estás seguro de que quieres borrar este registro?</h1>
     <div class="col">
-        <button type="submit" class="btn btn-primary" (click)="agregarEmpleado()">Agregar</button>
+      <button  *ngIf="action == 'edit'" class="btn btn-primary" (click)="actualizar()" style="background-color: rgb(12, 192, 12);">
+        Actualizar
+      </button>
+      <button *ngIf="action == 'delete'" class="btn btn-primary" (click)="this.delete()" style="background-color:red">
+        Confirmar
+      </button>
+      <p></p>
+      <button class="btn btn-primary" routerLink="/projects" >
+        Volver
+      </button>
     </div>
   </form>
-</div>
-<br />
-<br />
-<br />
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div *ngFor="let empleado of empleados; let id = index">
-        <app-empleado [id]=id [empleado]= empleado ></app-empleado>
-        <!-- {{ i + 1 }} {{ empleado.nombre }} {{ empleado.apellido }},
-        {{ empleado.cargo }} // {{ empleado.salario }}€ -->
-      </div>
-    </div>
-  </div>
 </div>

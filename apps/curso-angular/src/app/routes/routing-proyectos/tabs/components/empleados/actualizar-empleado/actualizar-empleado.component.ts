@@ -39,10 +39,14 @@ export class ActualizarEmpleadoComponent implements OnInit {
   this.router.navigate(['/projects']);
 }
   ngOnInit(): void {
+    //Captura el índice de la url
     this.index = this.route.snapshot.params['id'];
+    
     this.empleado = this.Tsv.find(this.index);
     this.action = this.route.snapshot.queryParams['action']
-    console.log(this.route.snapshot);
+
+    console.log(this.action);
+
     
     
 
